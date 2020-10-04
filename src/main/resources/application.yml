@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8089
+
+zuul:
+  prefix: /api
+  routes:
+    release:
+      path: /release/**
+      serviceId: DB-WRAPPER
+    test:
+      path: /test/**
+      serviceId: DB-WRAPPER
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761}/eureka/
